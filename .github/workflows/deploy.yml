@@ -26,7 +26,7 @@ jobs:
     - name: Build and push Docker images
       run: |
         # Build and push each service
-        for service in user-service product-service order-service payment-service notification-service; do
+        for service in nps notification-service; do
           aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin ${{ secrets.ECR_REGISTRY }}
           docker build -t $service ./$service
           docker tag $service:latest ${{ secrets.ECR_REGISTRY }}/$service:latest
