@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   mongodb:
     image: mongo:7.0
@@ -8,8 +6,8 @@ services:
     volumes:
       - mongodb_data:/data/db
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_ROOT_USERNAME: krishanbhargav150_db_user
+      MONGO_INITDB_ROOT_PASSWORD: ePdI32g33Vfo7sY6
 
   rabbitmq:
     image: rabbitmq:3-management
@@ -17,8 +15,8 @@ services:
       - "5672:5672"
       - "15672:15672"
     environment:
-      RABBITMQ_DEFAULT_USER: admin
-      RABBITMQ_DEFAULT_PASS: password
+      RABBITMQ_DEFAULT_USER: xekfqlmp
+      RABBITMQ_DEFAULT_PASS: WIz_7DpAXZj5faY2rytZh1axR3ufs2GI
 
   redis:
     image: redis:7.2
@@ -33,9 +31,9 @@ services:
     ports:
       - "3000:3000"
     environment:
-      MONGODB_URI: mongodb://admin:password@mongodb:27017/orderdb?authSource=admin
-      RABBITMQ_URL: amqp://admin:password@rabbitmq:5672
-      REDIS_URL: redis://redis:6379
+      MONGODB_URI: mongodb+srv://krishanbhargav150_db_user:ePdI32g33Vfo7sY6@cluster0.u7eyibv.mongodb.net/?appName=Cluster0
+      RABBITMQ_URL: amqps://xekfqlmp:WIz_7DpAXZj5faY2rytZh1axR3ufs2GI@gerbil.rmq.cloudamqp.com/xekfqlmp
+      REDIS_URL: redis://default:LJIBSHAzK8ckHULWZ9yZczR6aNWWTAIr@redis-12279.crce281.ap-south-1-3.ec2.cloud.redislabs.com:12279
     depends_on:
       - mongodb
       - rabbitmq
