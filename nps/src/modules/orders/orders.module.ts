@@ -14,7 +14,7 @@ import { Order, OrderSchema } from '../../entity/order.schema';
         transport: Transport.RMQ,
         options: {
           urls: [process.env.RABBITMQ_URL || 'amqp://localhost:5672'],
-          queue: 'product_queue',
+          queue: 'main_queue',
           queueOptions: {
             durable: false,
           },
@@ -25,7 +25,7 @@ import { Order, OrderSchema } from '../../entity/order.schema';
         transport: Transport.RMQ,
         options: {
           urls: [process.env.RABBITMQ_URL || 'amqp://localhost:5672'],
-          queue: 'payment_queue',
+          queue: 'main_queue',
           queueOptions: {
             durable: false,
           },
@@ -36,7 +36,7 @@ import { Order, OrderSchema } from '../../entity/order.schema';
         transport: Transport.RMQ,
         options: {
           urls: [process.env.RABBITMQ_URL || 'amqp://localhost:5672'],
-          queue: 'notification_queue',
+          queue: 'main_queue',
           queueOptions: {
             durable: false,
           },

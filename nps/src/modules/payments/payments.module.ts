@@ -14,7 +14,7 @@ import { Payment, PaymentSchema } from '../../entity/payment.schema';
         transport: Transport.RMQ,
         options: {
           urls: [process.env.RABBITMQ_URL || 'amqp://localhost:5672'],
-          queue: 'order_queue',
+          queue: 'main_queue',
           queueOptions: {
             durable: false,
           },
@@ -25,7 +25,7 @@ import { Payment, PaymentSchema } from '../../entity/payment.schema';
         transport: Transport.RMQ,
         options: {
           urls: [process.env.RABBITMQ_URL || 'amqp://localhost:5672'],
-          queue: 'notification_queue',
+          queue: 'main_queue',
           queueOptions: {
             durable: false,
           },

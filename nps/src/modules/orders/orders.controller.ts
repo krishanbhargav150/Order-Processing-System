@@ -1,4 +1,5 @@
 import { Controller, Get, Post, Body, Param, Put } from '@nestjs/common';
+import { EventPattern } from '@nestjs/microservices';
 import { OrdersService } from './orders.service';
 import { Order } from '../../entity/order.schema';
 
@@ -24,5 +25,10 @@ export class OrdersController {
   @Put(':id/status')
   async updateStatus(@Param('id') id: string, @Body() body: { status: string }): Promise<Order | null> {
     return this.ordersService.updateStatus(id, body.status);
+  }
+
+  @EventPattern('payment_completed')
+  async handlePaymentCompleted(data: { orderId: string; status: string }) {
+    await this.ordersService.updateStatus(data.orderId, data.status);
   }
 }
